@@ -1,0 +1,18 @@
+{
+  "name": "vue_sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "<rio3@pearco.jp>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "webpack": "^4.32.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
+}
