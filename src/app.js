@@ -3,7 +3,12 @@ import Vue from 'vue'
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: 'Hello Vue!',
+    rawHtml: '<span style="color: red">This should be red.</span>',
+    dynamicId: 'dynamic',
+    isButtonDisabled: true,
+    seen: true,
+    url: 'https://qiita.com/hashimoto-1202/items/c81f5d4c271eef16d957'
   }
 })
 

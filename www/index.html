@@ -1,5 +1,12 @@
 <div id="app">
   <p>Message: {{ message }}</p>
+  <p v-once>This will never change: {{ message }}</p>
+  <p>Using mustaches: {{ rawHtml }}</p>
+  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <div v-bind:id="dynamicId"></div>
+  <button v-bind:disabled="isButtonDisabled">Button</button>
+  <p v-if="seen">Now you see me</p>
+  <a v-bind:href="url">リンク</a>
 </div>
 <div id="app-2">
   <span v-bind:title="message">
