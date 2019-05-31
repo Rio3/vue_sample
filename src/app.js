@@ -166,3 +166,38 @@ var watchExampleVM = new Vue({
     }
   }
 })
+
+Vue.component('my-component', {
+  template: '<p class="foo bar">Hi</p>'
+})
+var vm = new Vue({
+  el: '#class-bind-example',
+  data: {
+    isActive: true,
+    hasError: false,
+    classObject: {
+      active: true,
+      'text-danger': false
+    },
+    activeClass: 'active',
+    errorClass: 'text-danger'
+  },
+})
+
+var vm = new Vue({
+  el: '#style-bind-example',
+  data: {
+    activeColor: 'red',
+    fontSize: 30,
+    styleObject: {
+      color: 'red',
+      fontSize: '13px'
+    },
+    baseStyles: {
+      color: 'blue'
+    },
+    overridingStyles: {
+      fontSize: 20
+    }
+  }
+})

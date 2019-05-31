@@ -56,5 +56,21 @@
   </p>
   <p>{{ answer }}</p>
 </div>
+<div id="class-bind-example">
+  <div
+    class="static"
+    v-bind:class="{ active: isActive, 'text-danger': hasError }"
+  >class</div>
+  <div v-bind:class="classObject">classObject</div>
+  <div v-bind:class="[{ active: isActive }, errorClass]">class_list</div>
+  <my-component class="baz boo"></my-component>
+  <my-component v-bind:class="{ active: isActive }"></my-component>
+</div>
+<div id="style-bind-example">
+  <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">style</div>
+  <div v-bind:style="styleObject">style</div>
+  <div v-bind:style="[baseStyles, overridingStyles]">style</div>
+  <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">style</div>
+</div>
 
 <script src="bundle.js"></script>
