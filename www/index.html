@@ -117,5 +117,30 @@
   <button v-on:click="toggleLoginType">Toggle login type</button>
   <h1 v-show="ok">Hello!</h1>
 </div>
+<ul id="example-1">
+  <li v-for="item in items">
+    {{ item.message }}
+  </li>
+</ul>
+<ul id="example-2">
+  <li v-for="(item, index) of items">
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  </li>
+</ul>
+<ul id="v-for-object">
+  <li v-for="(value, name, index) in object">
+    {{ index }}. {{ name }}: {{ value }}
+  </li>
+</ul>
+<div id="user_example">
+  {{ userProfile.name }} ({{ userProfile.age }}歳) {{ userProfile.favoriteColor }}色が好き {{ userProfile.height }}cm {{ userProfile.weight }}kg
+</div>
+<div id="sort_example">
+  <li v-for="n in evenNumbers">{{ n }}</li>
+  <li v-for="n in even(numbers)">{{ n }}</li>
+  <div>
+    <span v-for="n in 10">{{ n }} </span>
+  </div>
+</div>
 
 <script src="bundle.js"></script>
