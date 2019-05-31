@@ -201,3 +201,23 @@ var vm = new Vue({
     }
   }
 })
+
+var vm = new Vue({
+  el: '#rendering_example',
+  data: {
+    awesome: true,
+    ok: true,
+    type: 'A',
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      if (this.loginType === 'username') {
+        return this.loginType = 'email'
+      }
+      else {
+        return this.loginType = 'username'
+      }
+    }
+  }
+})
