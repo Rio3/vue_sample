@@ -363,3 +363,27 @@ var example5 = new Vue({
     }
   }
 })
+
+var form_example = new Vue({
+  el: '#form_example',
+  data: {
+    message: "",
+    checked: false,
+    picked: "",
+    selected: 'A',
+    options: [
+      { text:'One', value: 'A' },
+      { text:'Two', value: 'B' },
+      { text:'Three', value: 'C' }
+    ],
+    toggle: "yes",
+    pick: "a",
+    age: ""
+  }
+})
+var example6 = new Vue({
+  el: '#example-6',
+  data: {
+    checkedNames: []
+  }
+})
