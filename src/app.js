@@ -330,3 +330,36 @@ new Vue({
     }
   }
 })
+
+var example3 = new Vue({
+  el: '#example-3',
+  data: {
+    counter: 0
+  }
+})
+var example4 = new Vue({
+  el: '#example-4',
+  data: {
+    name: 'Vue.js'
+  },
+  methods: {
+    greet: function (event) {
+      alert('Hello ' + this.name + '!')
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  }
+})
+var example5 = new Vue({
+  el: '#example-5',
+  methods: {
+    say: function (message) {
+      alert(message)
+    },
+    warn: function (message, event) {
+      if (event) event.preventDefault()
+      alert(message)
+    }
+  }
+})
