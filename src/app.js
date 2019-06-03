@@ -268,7 +268,12 @@ user_example.userProfile = Object.assign({}, user_example.userProfile, {
 var sort_example = new Vue({
   el: '#sort_example',
   data: {
-    numbers: [ 1, 2, 3, 4, 5 ]
+    numbers: [ 1, 2, 3, 4, 5 ],
+    items: [
+      { msg: 'message1' },
+      { msg: 'message2' }
+    ],
+    todos:[]
   },
   computed: {
     evenNumbers: function () {
@@ -282,6 +287,46 @@ var sort_example = new Vue({
       return numbers.filter(function (number) {
         return number % 2 === 0
       })
+    }
+  }
+})
+
+Vue.component('todo-item', {
+  template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+  props: ['title']
+})
+new Vue({
+  el: '#todo-list-example',
+  data: {
+    newTodoText: '',
+    todos: [
+      {
+        id: 1,
+        title: 'Do the dishes',
+      },
+      {
+        id: 2,
+        title: 'Take out the trash',
+      },
+      {
+        id: 3,
+        title: 'Mow the lawn'
+      }
+    ],
+    nextTodoId: 4
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
     }
   }
 })
