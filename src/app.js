@@ -221,3 +221,112 @@ var vm = new Vue({
     }
   }
 })
+
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    parentMessage: 'Parent',
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+new Vue ({
+  el: '#v-for-object',
+  data: {
+    object: {
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2019/05/31'
+    }
+  }
+})
+var user_example = new Vue({
+  el: '#user_example',
+  data: {
+    userProfile: {
+      name: 'Anika'
+    }
+  }
+})
+Vue.set(user_example.userProfile, 'age', 27)
+user_example.$set(user_example.userProfile, 'favoriteColor', '赤')
+user_example.userProfile = Object.assign({}, user_example.userProfile, {
+  height: 160,
+  weight: 50
+})
+var sort_example = new Vue({
+  el: '#sort_example',
+  data: {
+    numbers: [ 1, 2, 3, 4, 5 ],
+    items: [
+      { msg: 'message1' },
+      { msg: 'message2' }
+    ],
+    todos:[]
+  },
+  computed: {
+    evenNumbers: function () {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0
+      })
+    }
+  },
+  methods: {
+    even: function (numbers) {
+      return numbers.filter(function (number) {
+        return number % 2 === 0
+      })
+    }
+  }
+})
+
+Vue.component('todo-item', {
+  template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+  props: ['title']
+})
+new Vue({
+  el: '#todo-list-example',
+  data: {
+    newTodoText: '',
+    todos: [
+      {
+        id: 1,
+        title: 'Do the dishes',
+      },
+      {
+        id: 2,
+        title: 'Take out the trash',
+      },
+      {
+        id: 3,
+        title: 'Mow the lawn'
+      }
+    ],
+    nextTodoId: 4
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})
