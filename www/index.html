@@ -235,5 +235,43 @@
   <br>
   <span>Checked names: {{ checkedNames }}</span>
 </div>
+<div id="components-demo">
+  <button-counter></button-counter>
+  <button-counter></button-counter>
+  <button-counter></button-counter>
+</div>
+<div id="blog-post-demo">
+  <blog-post
+    v-for="post in posts"
+    v-bind:key="post.id"
+    v-bind:post="post"
+  ></blog-post>
+</div>
+<div id="blog-posts-events-demo">
+  <div :style="{ fontSize: postFontSize + 'em' }">
+    <blog-post
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:post="post"
+      v-on:enlarge-text="onEnlargeText"
+    ></blog-post>
+  </div>
+  <custom-input v-model="searchText"></custom-input>
+  <alert-box>
+    Something bad happened.
+  </alert-box>
+</div>
+<div id="dynamic-component-demo" class="demo">
+  <button
+    v-for="tab in tabs"
+    v-bind:key="tab"
+    v-bind:class="['tab-button', { active: currentTab === tab }]"
+    v-on:click="currentTab = tab"
+  >{{ tab }}</button>
+  <component
+    v-bind:is="currentTabComponent"
+    class="tab"
+  ></component>
+</div>
 
 <script src="bundle.js"></script>
