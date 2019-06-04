@@ -512,3 +512,24 @@ new Vue({
     'component-b': ComponentB
   }
 })
+
+Vue.component('props-component', {
+  props: {
+    title: String,
+    likes: Number
+  },
+  template: `
+    <div>
+      <p>{{ title }}</p>
+      <p>♡ {{ likes }}</p>
+    </div>
+  `
+})
+new Vue({
+  el: '#props-example',
+  data: {
+    posts:[
+      { title: 'タイトル', likes: 5 }
+    ]
+  }
+})

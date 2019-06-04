@@ -276,5 +276,13 @@
   <base-input></base-input>
   <base-button></base-button>
 </div>
+<div id="props-example">
+  <props-component
+    v-for="post in posts"
+    v-bind:key="post.id"
+    v-bind:title="post.title"
+    v-bind:likes="post.likes"
+  ></props-component>
+</div>
 
 <script src="bundle.js"></script>
