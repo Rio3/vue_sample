@@ -1,6 +1,26 @@
 import Vue from 'vue'
 import axios from 'axios'
 import lodash from 'lodash'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+const requireComponent = require.context(
+  './components',
+  false,
+  /Base[A-Z]\w+\.(vue|js)$/
+)
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName)
+  const componentName = upperFirst(
+    camelCase(
+      fileName.split('/').pop().replace(/\.\w+$/, '')
+    )
+  )
+  Vue.component(
+    componentName,
+    componentConfig.default || componentConfig
+  )
+})
 
 var app = new Vue({
   el: '#app',
@@ -377,7 +397,6 @@ var form_example = new Vue({
       { text:'Three', value: 'C' }
     ],
     toggle: "yes",
-    pick: "a",
     age: ""
   }
 })
@@ -483,5 +502,13 @@ new Vue({
       return 'tab-' +
         this.currentTab.toLowerCase()
     }
+  }
+})
+
+import ComponentB from './components/ComponentB'
+new Vue({
+  el: '#local-component-example',
+  components: {
+    'component-b': ComponentB
   }
 })

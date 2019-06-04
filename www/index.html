@@ -221,8 +221,6 @@
     false-value="no"
   >{{ toggle }}
   <br>
-  <input type="radio" v-model="pick" v-bind:value="a">pick: {{ pick }}
-  <br>
   <input v-model.number="age" type="number">age: {{ age }}
 </div>
 <div id="example-6">
@@ -272,6 +270,11 @@
     v-bind:is="currentTabComponent"
     class="tab"
   ></component>
+</div>
+<div id="local-component-example">
+  <component-b></component-b>
+  <base-input></base-input>
+  <base-button></base-button>
 </div>
 
 <script src="bundle.js"></script>

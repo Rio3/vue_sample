@@ -12,8 +12,18 @@ module.exports = {
     inline: true
   },
   resolve: {
+    extensions: ['.js','.json','.vue'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js' // おまじない
+      'vue$': 'vue/dist/vue.esm.js'
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      }
+    ]
   }
 };
