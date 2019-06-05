@@ -516,20 +516,48 @@ new Vue({
 Vue.component('props-component', {
   props: {
     title: String,
-    likes: Number
+    likes: [Number, String],
+    isPublished: {
+      type: Boolean,
+      require: true
+    },
+    commentIds: {
+      type: Array,
+      default: function () {
+        return [1, 2, 3]
+      }
+    },
+    author: {
+      type: Object,
+      default: function () {
+        return { name: '四郎', company: '虫歯建設株式会社' }
+      }
+    },
+    status: {
+      validator: function (value) {
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
   },
   template: `
     <div>
-      <p>{{ title }}</p>
-      <p>♡ {{ likes }}</p>
+      <h3>{{ title }}</h3>
+      <p>author: {{ author.name }} ({{ author.company }})</p>
+      <p>likes: {{ likes }} comment: {{ commentIds }}</p>
+      <p>published: {{ isPublished ? "◯" : "×" }} status: {{ status }}</p>
     </div>
   `
 })
+function Person (firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
 new Vue({
   el: '#props-example',
   data: {
     posts:[
-      { title: 'タイトル', likes: 5 }
+      { title: 'タイトル1', likes: 5, isPublished: true, commentIds: [112, 113, 114], author: { name: '三郎', company: '山田書店' }, status: 'success' },
+      { title: 'タイトル2', likes: 10, isPublished: true, author: { name: '三郎', company: '山田書店' }, status: 'danger' }
     ]
   }
 })

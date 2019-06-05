@@ -279,10 +279,19 @@
 <div id="props-example">
   <props-component
     v-for="post in posts"
+    v-bind="post"
     v-bind:key="post.id"
-    v-bind:title="post.title"
-    v-bind:likes="post.likes"
   ></props-component>
+  <props-component
+    v-for="post in posts"
+    v-bind:key="post.id"
+    v-bind:title="post.title + ' by ' + post.author.name"
+    v-bind:likes="42"
+    v-bind:is-published="false"
+    v-bind:comment-ids="[123, 124, 125]"
+    v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"
+  ></props-component>
+  <blog-posttt></blog-posttt>
 </div>
 
 <script src="bundle.js"></script>
