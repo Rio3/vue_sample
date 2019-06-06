@@ -297,5 +297,18 @@
   <bootstrap-date-input data-date-picker="activated" class="date-picker-theme-dark"></bootstrap-date-input>
   <base-input label="ユーザーネーム" v-model="username" required></base-input>
 </div>
+<div id="event-example">
+  <span>Loving Vue</span>
+  <base-checkbox v-model="lovingVue"></base-checkbox><br>
+  <base-input
+    label="username"
+    v-model="username"
+    v-on:focus="onFocus"
+  ></base-input>
+  <text-document
+    v-bind:title="title"
+    v-on:update:title="title = $event"
+  ></text-document>
+</div>
 
 <script src="bundle.js"></script>

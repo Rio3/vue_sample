@@ -6,6 +6,7 @@ import camelCase from 'lodash/camelCase'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import css from './stylesheet/app.css'
 
 Vue.use(BootstrapVue)
 
@@ -581,5 +582,58 @@ new Vue ({
   },
   components: {
     'bootstrap-date-input': BootstrapDateInput
+  }
+})
+
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
+  template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
+  `
+})
+var InputTitle = {
+  props: ['title'],
+  template: '<input type="text" v-model="title">',
+  updated: function () {
+    this.$emit('update:title', newTitle)
+  }
+}
+var TextDocument = {
+  props: ['title'],
+  components: {
+    'input-title': InputTitle
+  },
+  template: `
+    <div class="text-document">
+      <h3>{{ title }}</h3>
+      <input-title v-model="title"></input-title>
+    </div>
+  `
+}
+new Vue ({
+  el: '#event-example',
+  data: {
+    lovingVue: true,
+    username: "",
+    focusText: "",
+    title: "default_title"
+  },
+  methods: {
+    onFocus: function () {
+      this.focusText = "focus now"
+    }
+  },
+  components: {
+    'text-document': TextDocument
   }
 })
