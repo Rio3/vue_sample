@@ -3,6 +3,11 @@ import axios from 'axios'
 import lodash from 'lodash'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
 
 const requireComponent = require.context(
   './components',
@@ -559,5 +564,22 @@ new Vue({
       { title: 'タイトル1', likes: 5, isPublished: true, commentIds: [112, 113, 114], author: { name: '三郎', company: '山田書店' }, status: 'success' },
       { title: 'タイトル2', likes: 10, isPublished: true, author: { name: '三郎', company: '山田書店' }, status: 'danger' }
     ]
+  }
+})
+
+import { BFormInput } from 'bootstrap-vue'
+var BootstrapDateInput = {
+  components: {
+    'b-form-input': BFormInput
+  },
+  template: '<b-form-input type="date"></b-form-input>',
+}
+new Vue ({
+  el: '#bootstrap-example',
+  data: {
+    username: ""
+  },
+  components: {
+    'bootstrap-date-input': BootstrapDateInput
   }
 })

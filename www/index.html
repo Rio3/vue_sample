@@ -291,7 +291,11 @@
     v-bind:comment-ids="[123, 124, 125]"
     v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"
   ></props-component>
-  <blog-posttt></blog-posttt>
+</div>
+<div id="bootstrap-example">
+  <label>年月日</label>
+  <bootstrap-date-input data-date-picker="activated" class="date-picker-theme-dark"></bootstrap-date-input>
+  <base-input label="ユーザーネーム" v-model="username" required></base-input>
 </div>
 
 <script src="bundle.js"></script>
