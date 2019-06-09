@@ -4,7 +4,20 @@ export default {
   template: `
     <label>
       {{ label }}
-      <input v-bind="$attrs" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" placeholder="Enter your username">
+      <input v-bind="$attrs" v-bind:value="value" v-on="inputListeners" placeholder="Enter your username">
     </label>
-  `
+  `,
+  computed: {
+    inputListeners: function () {
+      var vm = this
+      return Object.assign({},
+        this.$listeners,
+        {
+          input: function (event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
+  }
 }
