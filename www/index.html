@@ -306,5 +306,35 @@
     v-on:focus="onFocus"
   ></base-input>
 </div>
+<div id="slot-example">
+  <navigation-link>
+    <font-awesome-icon icon="user"></font-awesome-icon>
+    Your Profile<br>
+    Logged in as {{ user.name }}
+  </navigation-link>
+  <submit-button></submit-button>
+  <submit-button>Save</submit-button>
+  <base-layout>
+    <template v-slot:header>
+      <h1>Here might be a page title</h1>
+    </template>
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+    <template v-slot:footer>
+      <p>Here's some contact info</p>
+    </template>
+  </base-layout>
+  <current-user>
+    <template v-slot:default="slotProps">
+      {{ slotProps.current_user.firstName }}
+    </template>
+  </current-user>
+  <current-user v-slot="slotProps">
+    {{ slotProps.current_user.firstName }}
+  </current-user>
+  <current-user v-slot="{ current_user: person }">
+    {{ person.firstName }}
+  </current-user>
+</div>
 
 <script src="bundle.js"></script>
