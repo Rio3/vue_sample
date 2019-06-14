@@ -7,8 +7,14 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import css from './stylesheet/app.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(fas)
 
 Vue.use(BootstrapVue)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 const requireComponent = require.context(
   './components',
@@ -569,6 +575,7 @@ new Vue({
 })
 
 import { BFormInput } from 'bootstrap-vue'
+import BaseInput from "./components/BaseInput";
 var BootstrapDateInput = {
   components: {
     'b-form-input': BFormInput
@@ -613,4 +620,65 @@ new Vue ({
       this.focusText = "focus now"
     }
   },
+})
+
+var NavigationLink = {
+  template: `
+    <a class="nav-link">
+      <slot></slot>
+    </a>
+  `
+}
+var SubmitButton = {
+  template: `
+    <button type="submit">
+      <slot>Submit</slot>
+    </button>
+  `
+}
+var BaseLayout = {
+  template: `
+    <div class="container">
+      <header>
+        <slot name="header"></slot>
+      </header>
+      <main>
+        <slot></slot>
+      </main>
+      <footer>
+        <slot name="footer"></slot>
+      </footer>
+    </div>
+  `
+}
+var CurrentUser = {
+  data: function () {
+    return {
+      current_user: {
+        firstName: "ミミカ",
+        lastName: "味楽る"
+      }
+    }
+  },
+  template: `
+    <span>
+      <slot v-bind:current_user="current_user">
+        {{ current_user.lastName }}
+      </slot>
+    </span>
+  `
+}
+new Vue ({
+  el: '#slot-example',
+  data: {
+    user: {
+      name: '味楽るミミカ'
+    }
+  },
+  components: {
+    'navigation-link': NavigationLink,
+    'submit-button': SubmitButton,
+    'base-layout': BaseLayout,
+    'current-user': CurrentUser
+  }
 })
