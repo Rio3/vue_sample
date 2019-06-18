@@ -266,10 +266,12 @@
     v-bind:class="['tab-button', { active: currentTab === tab }]"
     v-on:click="currentTab = tab"
   >{{ tab }}</button>
-  <component
-    v-bind:is="currentTabComponent"
-    class="tab"
-  ></component>
+  <keep-alive>
+    <component
+      v-bind:is="currentTabComponent"
+      class="tab"
+    ></component>
+  </keep-alive>
 </div>
 <div id="local-component-example">
   <component-b></component-b>
@@ -335,6 +337,10 @@
   <current-user v-slot="{ current_user: person }">
     {{ person.firstName }}
   </current-user>
+</div>
+<div id="async-example">
+  <async-example></async-example>
+  <async-webpack-example></async-webpack-example>
 </div>
 
 <script src="bundle.js"></script>
