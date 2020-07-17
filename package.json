@@ -15,7 +15,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.22",
     "css-loader": "^2.1.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
